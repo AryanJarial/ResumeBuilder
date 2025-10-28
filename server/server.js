@@ -15,6 +15,12 @@ await connectDB()
 app.use(express.json())
 app.use(cors())
 
+app.use(cors({
+  origin: ["https://resume-builder-p8m04jfw0-aryan-jarials-projects.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+}));
+
 app.get('/', (req, res)=> res.send("Server is live..."))
 app.use('/api/users', userRouter)
 app.use('/api/resumes', resumeRouter)
